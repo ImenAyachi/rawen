@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}VPN{% endblock %}
+{% block content %}
+  <h2>Configuration VPN</h2>
+  <p><strong>Statut :</strong> 
+    <span class="badge bg-{{ 'success' if status == 'Actif' else 'secondary' }}">
+      {{ status }}
+    </span>
+  </p>
+
+  {% if message %}
+  {% endif %}
+
+  <form method="post">
+    <div class="mb-3">
+      <label class="form-label">Contenu du fichier wg0.conf</label>
+      <textarea name="config_data" class="form-control" rows="10">{{ config_data }}</textarea>
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary" name="action" value="save">💾 Enregistrer</button>
+      <button class="btn btn-success" name="action" value="start">▶ Démarrer</button>
+      <button class="btn btn-danger" name="action" value="stop">⏹ Arrêter</button>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Commandes{% endblock %}
+{% block content %}
+  <h2>Exécuter une commande système</h2>
+
+  <form method="post" class="mb-3">
+    <input type="text" class="form-control mb-2" name="command" value="{{ user_command|default('') }}" placeholder="Ex: systemctl status wg-quick@wg0">
+    <button class="btn btn-primary">Exécuter</button>
+  </form>
+
+  {% if error_message %}
+    <div class="alert alert-danger"><pre>{{ error_message }}</pre></div>
+  {% endif %}
+
+  {% if output %}
+    <div class="alert alert-secondary"><pre>{{ output }}</pre></div>
+  {% endif %}
+{% endblock %}

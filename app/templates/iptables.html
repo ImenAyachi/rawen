@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}IPTables{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">🛡️ Règles IPTables</h2>
+
+  <h5 class="text-muted">📋 Liste actuelle des règles :</h5>
+  <pre class="bg-dark text-light p-3 rounded">{{ rules }}</pre>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h5>➕ Ajouter une règle</h5>
+      <form method="POST" action="/iptables/add" class="mb-3">
+        <input type="text" class="form-control mb-2" name="rule" placeholder="Ex: -A INPUT -p tcp --dport 22 -j ACCEPT" required>
+        <button class="btn btn-success w-100">Ajouter</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <h5>❌ Supprimer une règle</h5>
+      <form method="POST" action="/iptables/delete">
+        <input type="text" class="form-control mb-2" name="rule" placeholder="Ex: -D INPUT -p tcp --dport 22 -j ACCEPT" required>
+        <button class="btn btn-danger w-100">Supprimer</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
