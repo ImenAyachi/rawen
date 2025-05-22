@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Envoyé - CyberDefense</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #eef1f5, #d1e6f0);
+      font-family: 'Ubuntu', sans-serif;
+      animation: fadeIn 1s ease-out;
+    }
+    .success-box {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: slideUp 1s ease-out;
+    }
+    .success-box h1 {
+      font-size: 2.5rem;
+      color: #28a745;
+      animation: bounce 1s infinite alternate;
+    }
+    .btn-custom {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+    .btn-custom:active {
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes slideUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="container mt-5">
+    <div class="success-box">
+      <h1 class="text-success"><span class="fas fa-check-circle"></span> ✅ Merci !</h1>
+      <p>Votre message a été envoyé avec succès. Nous vous répondrons bientôt !</p>
+      <a href="/" class="btn btn-custom">Retourner à l'accueil</a>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

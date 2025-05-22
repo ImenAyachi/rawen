@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CyberScanner - Accueil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    input[type="checkbox"]:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 80px;
+      transition: background 0.3s ease, color 0.3s ease;
+      background-image: url("{{ url_for('static', filename='image2.jpg') }}");
+      animation: zoomInOut 10s ease-in-out infinite;
+    }
+
+    .hero-section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero-section p {
+      font-size: 1.25rem;
+      margin: 20px 0;
+    }
+
+    .cta-btn {
+      font-size: 1.1rem;
+      padding: 12px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    
+
+    .cta-btn:hover {
+      background-color: #0056b3;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+
+    .preferences {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Thème clair */
+    body.light-theme {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .light-theme .navbar {
+      background-color: #ffffff;
+    }
+
+    .light-theme .navbar-brand {
+      color: #007bff;
+    }
+
+    .light-theme .nav-link {
+      color: #2c3e50;
+    }
+
+    .light-theme .nav-link:hover {
+      color: #007bff;
+    }
+
+    /* Thème sombre */
+    body.dark-theme {
+      background-color: #1e1e2f;
+      color: #f0f0f0;
+    }
+
+    .dark-theme .navbar {
+      background-color: #2c2f3e;
+    }
+
+    .dark-theme .navbar-brand {
+      color: #4a90e2;
+    }
+
+    .dark-theme .nav-link {
+      color: #f0f0f0;
+    }
+
+    .dark-theme .nav-link:hover {
+      color: #4a90e2;
+    }
+
+    .dark-theme .hero-section h1,
+    .dark-theme .hero-section p {
+      color: #ffffff;
+    }
+
+    .dark-theme .cta-btn {
+      background-color: #4a90e2;
+    }
+
+    .dark-theme .cta-btn:hover {
+      background-color: #357ab8;
+    }
+
+    .dark-theme .preferences {
+      background: rgba(44, 47, 62, 0.9);
+      color: #f0f0f0;
+    }
+
+   #cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 150px;
+  right: 150px;
+  z-index: 1050;
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#cookie-banner p {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: 0.95rem;
+}
+
+#cookie-banner form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#cookie-banner select,
+#cookie-banner button {
+  height: 38px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+#cookie-banner button {
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+
+    .dark-theme #cookie-banner {
+  background-color: #2c2f3e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+
+    .form-select {
+      max-width: 120px;
+    }
+
+    #themeText {
+      cursor: default; /* Ensures no pointer cursor appears */
+    }
+  </style>
+</head>
+<body class="{{ theme }}-theme">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">CyberScanner</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">
+            {{ 'À propos du site' if langue == 'fr' else 'About website' }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <!-- Bouton Extension -->
+        <li class="nav-item">
+          <a class="nav-link" href="/extension-info">
+            {{ 'Extension' if langue == 'fr' else 'Extension' }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <h1>
+      {{ 'Bienvenue sur CyberScanner' if langue == 'fr' else 'Welcome to CyberScanner' }}
+    </h1>
+    <p>
+      {{ 'Protégez-vous contre les menaces en ligne grâce à nos outils de détection intelligents.' if langue == 'fr' else 'Protect yourself against online threats with our intelligent detection tools.' }}
+    </p>
+    <!-- Bouton principal -->
+    <a href="/home" class="btn btn-primary">
+      {{ 'Commencer la Détection' if langue == 'fr' else 'Start Detection' }}
+    </a>
+
+    <!-- Bouton Télécharger Extension -->
+    <div class="mt-3">
+      <a href="/download-extension" class="btn btn-primary" role="button" target="_blank" rel="noopener noreferrer">
+        {{ 'Télécharger l\'extension' if langue == 'fr' else 'Download the Extension' }}
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Cookie Consent -->
+{% if show_cookie_bar %}
+  <div id="cookie-banner" class="alert alert-info text-center fixed-bottom m-0 py-3">
+    <p class="mb-2">{{ 'Ce site utilise des cookies pour améliorer votre expérience. Acceptez-vous ?' if langue == 'fr' else 'This site uses cookies to improve your experience. Do you accept?' }}</p>
+    <form method="POST" action="/accept_cookies" class="d-inline">
+      <select name="langue" class="form-select d-inline w-auto me-2">
+        <option value="fr" {{ 'selected' if langue == 'fr' else '' }}>Français</option>
+        <option value="en" {{ 'selected' if langue == 'en' else '' }}>English</option>
+      </select>
+      <select name="theme" class="form-select d-inline w-auto me-2">
+        <option value="light" {{ 'selected' if theme == 'light' else '' }}>{{ 'Clair' if langue == 'fr' else 'Light' }}</option>
+        <option value="dark" {{ 'selected' if theme == 'dark' else '' }}>{{ 'Sombre' if langue == 'fr' else 'Dark' }}</option>
+      </select>
+      <button type="submit" class="btn btn-success">{{ 'Accepter' if langue == 'fr' else 'Accept' }}</button>
+    </form>
+    <form method="POST" action="/reject_cookies" class="d-inline">
+      <button type="submit" class="btn btn-danger ms-2">{{ 'Refuser' if langue == 'fr' else 'Decline' }}</button>
+    </form>
+  </div>
+{% endif %}
+
+<!-- Préférences -->
+{% if accepted_cookies %}
+  <div class="preferences">
+    {{ 'Langue' if langue == 'fr' else 'Language' }}: <strong>{{ 'Français' if langue == 'fr' else 'English' }}</strong> |
+    {{ 'Thème' if langue == 'fr' else 'Theme' }}: <strong id="themeText">{{ 'Clair' if theme == 'light' else 'Sombre' }}</strong>
+    <div class="form-check form-switch d-inline ms-2 float-end">
+      <input class="form-check-input" type="checkbox" id="themeToggle"
+             {% if theme == 'dark' %}checked{% endif %} onchange="toggleTheme()">
+    </div>
+  </div>
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const themeToggle = document.getElementById('themeToggle');
+      const acceptedCookies = getCookie('accepted_cookies');
+
+      // Désactiver le toggle si cookies non acceptés
+      if (acceptedCookies !== 'yes') {
+          themeToggle.disabled = true;
+          themeToggle.title = "Vous devez accepter les cookies pour changer le thème";
+      }
+
+      themeToggle.addEventListener('change', function () {
+          const selectedTheme = themeToggle.checked ? 'dark' : 'light';
+
+          fetch('/update_theme', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: `theme=${selectedTheme}`
+          })
+          .then(response => {
+              if (response.status === 403) {
+                  alert("Vous devez accepter les cookies pour changer le thème.");
+                  // Réinitialiser l'état visuel
+                  themeToggle.checked = (selectedTheme === 'light');
+              } else {
+                  location.reload(); // recharger pour appliquer le thème
+              }
+          });
+      });
+
+      function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

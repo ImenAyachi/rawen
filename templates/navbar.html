@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">CyberDefense</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/chatbot">Chatbot</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/phishing-check">Detection Phishing</a>
+          </li>   
+          <li class="nav-item">
+            <a class="nav-link" href="/spam-check">Detection Spam</a>
+          </li>      
+          <li class="nav-item">
+            <a class="nav-link" href="/sql-injection">Detection d'Attaque</a>
+          </li>     
+          <li class="nav-item">
+            <a class="nav-link" href="/port-scanner">Detection des ports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/check-password">Scan Mot de Passe</a>
+          </li>   
+          <li class="nav-item">
+            <a class="nav-link" href="/aes">Chiffrer Texte</a>
+          </li>    
+          <li class="nav-item">
+            <a class="nav-link" href="/scan-file">Scan fichier</a>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <style>
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background: linear-gradient(to right, #dce2f0, #f5f8fd);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar styles */
+    nav {
+      background: linear-gradient(to right, #403f8d, #3e64ff);
+      padding: 15px;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+      color: white;
+      font-size: 1.1rem;
+      padding: 10px 15px;
+      transition: background 0.3s ease;
+    }
+
+    .navbar-nav .nav-item .nav-link:hover {
+      background-color: #ff9800;
+      color: white !important;
+      border-radius: 5px;
+    }
+
+    .navbar-brand {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white !important;
+    }
+
+    /* Card styles */
+    .card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card-title {
+      font-weight: bold;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #403f8d;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: auto;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    footer p strong {
+      color: #ff9800;
+    }
+
+    footer p.copy {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-nav {
+        text-align: center;
+      }
+    }
+  </style>

@@ -1,0 +1,5 @@
+zenv/
+__pycache__/
+
+logs.log
+.env
